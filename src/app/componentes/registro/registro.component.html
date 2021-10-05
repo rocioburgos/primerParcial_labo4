@@ -1,0 +1,16 @@
+<!--REGISTRO- CON FORM-->
+<body>
+       <div class="container">
+        <label><b>Email</b></label>
+        <input type="text" placeholder="Ingresa tu correo"  [(ngModel)]="email"   >
+  
+        <label><b>Clave</b></label>
+        <input type="password" placeholder="Aca la clave"  [(ngModel)]="clave" >
+  
+        <label><b>Repita la clave</b></label>
+        <input type="password" placeholder="Aca repeti la misma clave  de arriba"     >
+        <div>
+          <button (click)='registrar()' class="signupbtn"  >Registrarme</button>
+        </div>
+      </div> 
+</body>

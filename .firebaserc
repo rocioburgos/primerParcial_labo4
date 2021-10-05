@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "primerparcial-41eac": {
+      "hosting": {
+        "PrimerParcial": [
+          "primerparcial-41eac"
+        ]
+      }
+    }
+  }
+}
