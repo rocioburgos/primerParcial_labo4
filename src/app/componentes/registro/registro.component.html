@@ -1,16 +1,47 @@
 <!--REGISTRO- CON FORM-->
-<body>
-       <div class="container">
-        <label><b>Email</b></label>
-        <input type="text" placeholder="Ingresa tu correo"  [(ngModel)]="email"   >
-  
-        <label><b>Clave</b></label>
-        <input type="password" placeholder="Aca la clave"  [(ngModel)]="clave" >
-  
-        <label><b>Repita la clave</b></label>
-        <input type="password" placeholder="Aca repeti la misma clave  de arriba"     >
-        <div>
-          <button (click)='registrar()' class="signupbtn"  >Registrarme</button>
+<div class='container'>
+    
+  <form [formGroup]='formulario' (ngSubmit)='aceptar()'>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input formControlName='email' type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <small id="emailHelp1" class="form-text text-muted" *ngIf="formulario.get('email')?.hasError('required') && formulario.get('email')?.touched" >El email es requerido.</small>
+     
+        <small id="emailHelp2" class="form-text text-muted" *ngIf="formulario.get('email')?.hasError('esHotMail') && formulario.get('email')?.touched" >El email no puede ser de hotmail.</small>
+     
+     
+     
+         </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input   formControlName='clave' type="password" class="form-control" id="exampleInputPassword1">
+        <small id="claveHelp1" class="form-text text-muted" *ngIf="formulario.get('clave')?.hasError('required') && formulario.get('clave')?.touched" >La clave es requerida.</small>
+        
+        <small id="claveHelp2" class="form-text text-muted" *ngIf="formulario.get('clave')?.hasError('minlength') && formulario.get('clave')?.touched" >La clave debe tener 8 caracteres.</small>
+
+      </div>
+
+      <div class="form-group">
+          <label for="exampleInputPassword1">Edad</label>
+          <input   formControlName='edad' type="number" class="form-control" id="exampleInputEdad1">
+          <small id="edadHelp1" class="form-text text-muted" *ngIf="formulario.get('edad')?.hasError('required') && formulario.get('edad')?.touched" >La edad es requerida.</small>
+          <small id="edadHelp2" class="form-text text-muted" *ngIf="formulario.get('edad')?.hasError('min') && formulario.get('edad')?.touched" >La edad minima es 18.</small>
+
         </div>
-      </div> 
-</body>
+
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Nombre</label>
+          <input   formControlName='nombre' type="text" class="form-control" id="exampleInputNombre1">
+          <small id="nombreHelp1" class="form-text text-muted" *ngIf="formulario.get('nombre')?.hasError('required') && formulario.get('nombre')?.touched" >El nombre es requerido.</small>
+          <small id="nombreHelp2" class="form-text text-muted" *ngIf="formulario.get('nombre')?.hasError('tieneEspacio') && formulario.get('nombre')?.touched" >El nombre no puede tener espacios.</small>
+ 
+        </div>
+
+      <div class="form-group form-check">
+        <input  formControlName='terminos' type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]='formulario.invalid'>Submit</button>
+    </form>
+</div>
